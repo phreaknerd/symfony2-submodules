@@ -4,7 +4,7 @@ DIR="$DIR/symfony-standard"
 VENDOR="$DIR/vendor"
 BUNDLES="$VENDOR/bundles"
 
-git clone https://github.com/symfony/symfony-standard.git
+git clone https://github.com/symfony/symfony-standard.git $DIR
 
 cd $DIR
 rm -Rf ".git"
@@ -88,6 +88,9 @@ $DIR/app/console assets:install $DIR/web/
 #make log and cache writable
 chmod -R 0777 app/logs
 chmod -R 0777 app/cache
+
+echo "app/cache" >> $DIR/.gitignore
+echo "app/logs" >> $DIR/.gitignore
 
 git add .
 git commit -m "install submodules and web-assets"
